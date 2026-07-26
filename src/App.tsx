@@ -1,10 +1,13 @@
 
 
-import { AuthProvider } from './shared/contexts'
+import { AppThemeProvider, AuthProvider } from './shared/contexts'
 
 function App() {
   return (
     <AuthProvider>
+      <AppThemeProvider>
+
+      </AppThemeProvider>
 
     </AuthProvider>
   );
