@@ -1,12 +1,22 @@
+import { BrowserRouter } from 'react-router-dom';
 
+import { AppThemeProvider, AuthProvider, DrawerProvider } from './shared/contexts'
+import { Login, MenuLateral } from './shared/components'
 
-import { AppThemeProvider, AuthProvider } from './shared/contexts'
 
 function App() {
   return (
     <AuthProvider>
       <AppThemeProvider>
+        <Login>
+          <DrawerProvider>
+            <BrowserRouter>
+              <MenuLateral>
 
+              </MenuLateral>
+            </BrowserRouter>
+          </DrawerProvider>
+        </Login>
       </AppThemeProvider>
 
     </AuthProvider>
