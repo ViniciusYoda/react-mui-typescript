@@ -35,6 +35,7 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
             return result.message;
         } else {
             localStorage.setItem(LOCAL_STORAGE_KEY__ACCESS_TOKEN, JSON.stringify(result.accessToken));
+            setAccessToken(result.accessToken);
         }
     }, []);
 

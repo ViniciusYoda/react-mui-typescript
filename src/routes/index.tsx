@@ -1,14 +1,14 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from 'react';
+import { LinearProgress } from '@mui/material';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { useDrawerContext } from '../shared/contexts';
-import {
-    Dashboard,
-    DetalheDePessoas,
-    ListagemDePessoas,
-    DetalheDeCidades,
-    ListagemDeCidades,
-} from '../pages'
+
+const Dashboard = lazy(() => import('../pages/dashboard/Dashboard').then(({ Dashboard }) => ({ default: Dashboard })));
+const DetalheDePessoas = lazy(() => import('../pages/pessoas/DetalheDePessoas').then(({ DetalheDePessoas }) => ({ default: DetalheDePessoas })));
+const ListagemDePessoas = lazy(() => import('../pages/pessoas/ListagemDePessoas').then(({ ListagemDePessoas }) => ({ default: ListagemDePessoas })));
+const DetalheDeCidades = lazy(() => import('../pages/cidades/DetalheDeCidades').then(({ DetalheDeCidades }) => ({ default: DetalheDeCidades })));
+const ListagemDeCidades = lazy(() => import('../pages/cidades/ListagemDeCidades').then(({ ListagemDeCidades }) => ({ default: ListagemDeCidades })));
 
 export const AppRoutes = () => {
     const { setDrawerOptions } = useDrawerContext();
@@ -34,7 +34,8 @@ export const AppRoutes = () => {
     }, []);
 
     return (
-        <Routes>
+        <Suspense fallback={<LinearProgress />}>
+          <Routes>
             <Route path="/pagina-inicial" element={<Dashboard />} />
 
             <Route path="/pessoas" element={<ListagemDePessoas />} />
@@ -44,7 +45,8 @@ export const AppRoutes = () => {
             <Route path="/cidades/detalhe/:id" element={<DetalheDeCidades />} />
 
             <Route path="*" element={<Navigate to="/pagina-inicial" />} />
-        </Routes>
+          </Routes>
+        </Suspense>
     )
 
 }

@@ -144,7 +144,6 @@ export const DetalheDePessoas: React.FC = () => {
             <VForm
                 ref={formRef}
                 onSubmit={handleSave}
-                {...({ ...AutoCompleteCidade({} as any) } as any)}
             >
 
                 <Box margin={1} display="flex" flexDirection="column" component={Paper} variant="outlined">

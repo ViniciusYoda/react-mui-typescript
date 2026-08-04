@@ -133,7 +133,7 @@ export const DetalheDeCidades: React.FC = () => {
         />
       }
     >
-      <VForm ref={formRef} onSubmit={handleSave} {...({} as any)}>
+      <VForm ref={formRef} onSubmit={handleSave}>
 
         <Box margin={1} display="flex" flexDirection="column" component={Paper} variant="outlined">
 

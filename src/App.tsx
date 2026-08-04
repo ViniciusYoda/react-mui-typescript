@@ -1,4 +1,5 @@
 import { BrowserRouter } from 'react-router-dom';
+import { CssBaseline } from '@mui/material';
 
 import { AppThemeProvider, AuthProvider, DrawerProvider } from './shared/contexts'
 import { Login, MenuLateral } from './shared/components'
@@ -8,6 +9,7 @@ function App() {
   return (
     <AuthProvider>
       <AppThemeProvider>
+        <CssBaseline />
         <Login>
           <DrawerProvider>
             <BrowserRouter>
